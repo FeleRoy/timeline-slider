@@ -6,7 +6,7 @@ import { BuildOptions } from "./types/types";
 import { buildDevServer } from "./buildDevServer";
 
 export function buildWebpack(options: BuildOptions): webpack.Configuration {
-    const {mode, port, paths} = options
+    const {mode, paths} = options
     const isDev = mode === "development";
     return {
     mode: mode ?? "development",
