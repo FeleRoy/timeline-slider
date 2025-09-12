@@ -1,18 +1,11 @@
-import React from "react"
+import React, { useState } from "react";
+import AnimatedDate from "@/shared/ui/AnimatedDate/AnimatedDate";
+import CircleButtons from "@/shared/ui/CircleButtons/CircleButtons";
 
-
-interface HistoryPageProps {
-    
-}
-
+interface HistoryPageProps {}
 
 const HistoryPage: React.FC<HistoryPageProps> = ({}) => {
-    return (
-        <>
-        <div>History</div>
-        </>
-    )
-}
+  return <></>;
+};
 
-
-export default HistoryPage
+export default HistoryPage;
