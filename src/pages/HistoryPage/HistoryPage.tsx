@@ -5,7 +5,11 @@ import CircleButtons from "@/shared/ui/CircleButtons/CircleButtons";
 interface HistoryPageProps {}
 
 const HistoryPage: React.FC<HistoryPageProps> = ({}) => {
-  return <></>;
+  return (
+    <>
+      <CircleButtons></CircleButtons>
+    </>
+  );
 };
 
 export default HistoryPage;

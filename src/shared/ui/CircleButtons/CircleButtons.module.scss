@@ -1,0 +1,29 @@
+@use "@/styles/variables.scss";
+
+.circle {
+  position: relative;
+  margin: 50px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(variables.$main-color, 20%);
+  border-radius: 50%;
+
+  &__button {
+    position: absolute;
+    color: variables.$main-color;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 1px solid rgba(variables.$main-color, 20%);
+    background-color: variables.$main-color;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.5s;
+
+    &:hover {
+      background-color: transparent;
+      transition: background-color 0.5s;
+    }
+  }
+}
