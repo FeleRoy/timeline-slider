@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { memo, useEffect, useRef, useState } from "react";
 import styles from "./CircleNav.module.scss";
 import RoundButton from "@/shared/ui/RoundButton/RoundButton";
 
@@ -28,4 +28,4 @@ const CircleNav: React.FC<CircleNavProps> = ({
   );
 };
 
-export default CircleNav;
+export default memo(CircleNav);
