@@ -1,0 +1,22 @@
+@use "@/styles/variables.scss";
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    gap: 15px;
+    h3 {
+        font-family: variables.$accent-font;
+        color: variables.$accent-color;
+        font-size: 25px;
+        cursor: default;
+        user-select: none;
+    }
+
+
+    p {
+        font-size: 20px;
+        line-height: 30px;
+        cursor: default;
+        user-select: none;
+    }
+}

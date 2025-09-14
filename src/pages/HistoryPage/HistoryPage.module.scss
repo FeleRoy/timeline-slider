@@ -1,0 +1,64 @@
+.page {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1440px;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 104px;
+}
+
+.header {
+  display: flex;
+  width: 431px;
+  position: relative;
+  justify-content: space-between;
+  margin-top: 170px;
+
+  &-line {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(#3877EE, #EF5DA8);
+  }
+
+  h1 {
+    margin-left: 78px;
+    font-weight: bold;
+    font-size: 56px;
+    line-height: 120%;
+  }
+}
+
+.circle-wrapper {
+    position: absolute;
+    left: 452px;
+    top: 165px;
+}
+
+.title {
+    position: absolute;
+    left: 900px;
+    top: 238px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
+.date-wrapper {
+    display: flex;
+    margin-top: 59px;
+    margin-left: 214px;
+    gap: 94px;
+}
+
+.nav-wrapper {
+    margin-top: 94px;
+    margin-left: 78px;
+}
+
+.slider-wrapper {
+    margin-top: 60px;
+    margin-left: 0px;
+}
