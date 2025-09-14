@@ -33,7 +33,7 @@ const HistoryPage: React.FC<HistoryPageProps> = ({
       </div>
       
       <div className={styles['circle-wrapper']}>
-      <CircleButtons onBtnClick={handleButtonClick} activeIndex={currentPeriod - 1} setActiveIndex={setCurrentPeriod}></CircleButtons>
+      <CircleButtons btnCount={timelines.length} onBtnClick={handleButtonClick} activeIndex={currentPeriod - 1} setActiveIndex={setCurrentPeriod}></CircleButtons>
       </div>
 
       <div className={styles['date-wrapper']}>
