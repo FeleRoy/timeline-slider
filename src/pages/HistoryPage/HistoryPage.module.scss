@@ -4,6 +4,7 @@
   width: 1440px;
   position: relative;
   overflow: hidden;
+  padding-bottom: 104px;
 }
 
 .header {
@@ -30,14 +31,20 @@
   }
 }
 
-
-
-
 .circle-wrapper {
     position: absolute;
     left: 452px;
     top: 165px;
 }
+
+.title {
+    position: absolute;
+    left: 900px;
+    top: 238px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
 
 .date-wrapper {
     display: flex;
