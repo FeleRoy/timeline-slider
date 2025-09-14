@@ -6,7 +6,9 @@
   "scripts": {
     "build:dev": "webpack --env mode=development",
     "build:prod": "webpack --env mode=production",
-    "start": "webpack serve --env mode=development port=5000"
+    "start": "webpack serve --env mode=development port=5000",
+    "predeploy": "npm run build:prod",
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -19,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/FeleRoy/timeline-slider/issues"
   },
-  "homepage": "https://github.com/FeleRoy/timeline-slider#readme",
+  "homepage": "https://feleroy.github.io/timeline-slider",
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
     "@types/node": "^24.3.1",
@@ -28,6 +30,7 @@
     "@types/webpack": "^5.28.5",
     "@types/webpack-dev-server": "^4.7.1",
     "css-loader": "^7.1.2",
+    "gh-pages": "^6.3.0",
     "html-webpack-plugin": "^5.6.4",
     "mini-css-extract-plugin": "^2.9.4",
     "sass": "^1.92.1",
