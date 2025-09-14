@@ -3,7 +3,6 @@
   margin-right: auto;
   width: 1440px;
   position: relative;
-  min-height: 1080px;
   overflow: hidden;
 }
 
@@ -12,6 +11,7 @@
   width: 431px;
   position: relative;
   justify-content: space-between;
+  margin-top: 170px;
 
   &-line {
     top: 0;
@@ -28,4 +28,30 @@
     font-size: 56px;
     line-height: 120%;
   }
+}
+
+
+
+
+.circle-wrapper {
+    position: absolute;
+    left: 452px;
+    top: 165px;
+}
+
+.date-wrapper {
+    display: flex;
+    margin-top: 59px;
+    margin-left: 214px;
+    gap: 94px;
+}
+
+.nav-wrapper {
+    margin-top: 94px;
+    margin-left: 78px;
+}
+
+.slider-wrapper {
+    margin-top: 60px;
+    margin-left: 0px;
 }

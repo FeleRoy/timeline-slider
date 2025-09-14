@@ -15,7 +15,7 @@
     transition: background-color 0.5s;
     cursor: pointer;
 
-    &:hover {
+    &:hover:not(:disabled) {
         background-color: white;
         transition: background-color 0.5s;
     }

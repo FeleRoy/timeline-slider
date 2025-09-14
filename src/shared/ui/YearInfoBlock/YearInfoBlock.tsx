@@ -1,11 +1,14 @@
 import React from "react";
 import styles from "./YearInfoBlock.module.scss";
+import { yearsDateInfo } from "@/utils/types";
 
 
-interface YearInfoBlockProps {
-    year: number | string;
-    text: string;
-}
+// export interface YearInfoBlockProps {
+//     year: number | string;
+//     text: string;
+// }
+
+type YearInfoBlockProps = yearsDateInfo;
 
 const YearInfoBlock: React.FC<YearInfoBlockProps> = ({
     year,

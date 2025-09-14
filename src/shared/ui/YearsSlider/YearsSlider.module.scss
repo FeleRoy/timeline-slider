@@ -1,16 +1,11 @@
 @use "@/styles/variables.scss";
 .sliderContainer {
   position: relative;
-  padding: 0 100px; // Место для кнопок
+  padding: 0 76px; // Место для кнопок
 }
 
 .mySwiper {
   width: 100%;
-}
-
-.slide {
-  width: 400px !important;
-  height: auto;
 }
 
 .navButton {
@@ -43,11 +38,11 @@
 }
 
 .customPrev {
-  left: 0;
+  left: 10px;
 }
 
 .customNext {
-  right: 0;
+  right: 10px;
 }
 
 .disabled {

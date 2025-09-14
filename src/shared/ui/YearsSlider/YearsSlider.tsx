@@ -13,10 +13,14 @@ import { Navigation } from "swiper/modules";
 
 import LeftArrow from "@/assets/LeftArrow.svg";
 import RightArrow from "@/assets/RightArrow.svg";
+import { yearsDateInfo } from "@/utils/types";
 
-interface YearsSliderProps {}
 
-const YearsSlider: React.FC<YearsSliderProps> = ({}) => {
+interface YearsSliderProps {
+    date: yearsDateInfo[];
+}
+
+const YearsSlider: React.FC<YearsSliderProps> = ({date}) => {
   const swiperRef = useRef<any>(null);
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
@@ -44,7 +48,7 @@ const YearsSlider: React.FC<YearsSliderProps> = ({}) => {
         }}
         modules={[Navigation]}
         className={styles.mySwiper}
-        spaceBetween={20}
+        spaceBetween={80}
         slidesPerView="auto"
         onSlideChange={(swiper) => {
           setIsBeginning(swiper.isBeginning);
@@ -59,7 +63,7 @@ const YearsSlider: React.FC<YearsSliderProps> = ({}) => {
           <SwiperSlide style={{ width: "400px" }} key={index}>
             <YearInfoBlock
               year={slide.year}
-              text={slide.description}
+              text={slide.text}
             ></YearInfoBlock>
           </SwiperSlide>
         ))}
@@ -88,28 +92,5 @@ const YearsSlider: React.FC<YearsSliderProps> = ({}) => {
     </>
   );
 };
-
-const date = [
-  {
-    year: 2015,
-    description:
-      "13 сентября — частное солнечное затмение, видимое в Южной Африке и части Антарктиды",
-  },
-  {
-    year: 2015,
-    description:
-      "13 сентября — частное солнечное затмение, видимое в Южной Африке и части Антарктиды",
-  },
-  {
-    year: 2015,
-    description:
-      "13 сентября — частное солнечное затмение, видимое в Южной Африке и части Антарктиды",
-  },
-  {
-    year: 2015,
-    description:
-      "13 сентября — частное солнечное затмение, видимое в Южной Африке и части Антарктиды",
-  },
-];
 
 export default YearsSlider;
