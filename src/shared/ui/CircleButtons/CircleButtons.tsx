@@ -2,12 +2,17 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import style from "./CircleButtons.module.scss";
 import { gsap } from "gsap";
 
+//TODO: добавить отображение текста рядом с активной кнопкой
+
 interface CircleButtonsProps {
   buttons?: string[]; // от 2 до 6
   radius?: number;
   rotationDuration?: number;
   buttonSize?: number;
   startAngle?: number;
+  onBtnClick?: (index: number) => void;
+  activeIndex: number;
+  setActiveIndex: (index: number) => void;
 }
 
 //===============Эффекты на кнопку===========
@@ -33,7 +38,10 @@ const CircleButtons: React.FC<CircleButtonsProps> = ({
   radius = 265,
   rotationDuration = 0.8,
   buttonSize = 56,
-  startAngle = -Math.PI / 4
+  startAngle = -Math.PI / 4,
+  onBtnClick,
+  activeIndex,
+  setActiveIndex,
 }) => {
   if (buttons.length < 2 || buttons.length > 6) {
     throw new Error("количество кнопок от 2 до 6");
@@ -42,7 +50,7 @@ const CircleButtons: React.FC<CircleButtonsProps> = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const buttonsRef = useRef<(HTMLButtonElement | null)[]>([]);
   const angleStep = (2 * Math.PI) / buttons.length;
-  const [activeIndex, setActiveIndex] = useState(0);
+  //const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
     if (buttonsRef.current[activeIndex] && activeIndex != null) {
@@ -53,6 +61,35 @@ const CircleButtons: React.FC<CircleButtonsProps> = ({
     }
   }, []);
 
+  useEffect(() => {
+    buttonsRef.current.forEach((btn, idx) => {
+      if (!btn) return;
+      if (idx === activeIndex) {
+        activeEffect(btn);
+        const targetAngle =
+          ((((activeIndex + 1) * angleStep * 180) / Math.PI) % 360) +
+          (startAngle * 180) / Math.PI;
+        gsap.to(containerRef.current, {
+          rotation: -targetAngle,
+          duration: rotationDuration,
+          ease: "power2.inOut",
+        });
+
+        buttonsRef.current.forEach((element) => {
+          if (element) {
+            gsap.to(element, {
+              rotation: targetAngle,
+              duration: rotationDuration,
+              ease: "power2.inOut",
+            });
+          }
+        });
+      } else {
+        inactiveEffect(btn);
+      }
+    });
+  }, [activeIndex]);
+
   const setButtonRef = useCallback(
     (index: number) => (el: HTMLButtonElement | null) => {
       buttonsRef.current[index] = el;
@@ -62,7 +99,9 @@ const CircleButtons: React.FC<CircleButtonsProps> = ({
 
   //===============обработчики для кнопок===============
   const handleMouseEnter = (index: number) => {
+    if(index !== activeIndex){
     activeEffect(buttonsRef.current[index]);
+    }
   };
 
   const handleMouseLeave = (index: number) => {
@@ -77,7 +116,8 @@ const CircleButtons: React.FC<CircleButtonsProps> = ({
     }
 
     const targetAngle =
-      ((((clickedIndex + 1) * (angleStep) * 180) / Math.PI) % 360) + startAngle * 180 / Math.PI;
+      ((((clickedIndex + 1) * angleStep * 180) / Math.PI) % 360) +
+      (startAngle * 180) / Math.PI;
     gsap.to(containerRef.current, {
       rotation: -targetAngle,
       duration: rotationDuration,
@@ -94,6 +134,7 @@ const CircleButtons: React.FC<CircleButtonsProps> = ({
       }
     });
     setActiveIndex(clickedIndex);
+    onBtnClick(clickedIndex);
   };
   //===============обработчики для кнопок===============
 
@@ -105,8 +146,8 @@ const CircleButtons: React.FC<CircleButtonsProps> = ({
     >
       {buttons.map((button, index) => {
         const angle = index * angleStep + startAngle;
-        const x = radius * Math.cos(angle) + radius - buttonSize / 2 ;
-        const y = radius * Math.sin(angle) + radius - buttonSize / 2 ;
+        const x = radius * Math.cos(angle) + radius - buttonSize / 2;
+        const y = radius * Math.sin(angle) + radius - buttonSize / 2;
         return (
           <button
             key={index}
@@ -117,7 +158,13 @@ const CircleButtons: React.FC<CircleButtonsProps> = ({
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={() => handleMouseLeave(index)}
             className={style.circle__button}
-            style={{ left: `${x}px`, top: `${y}px`, transform: "scale(0.11)" }}
+            style={{
+              left: `${x}px`,
+              top: `${y}px`,
+              transform: "scale(0.11)",
+              width: buttonSize,
+              height: buttonSize,
+            }}
           >
             {button}
           </button>

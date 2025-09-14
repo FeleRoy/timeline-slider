@@ -1,9 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import styles from "./RoundButton.module.scss";
 import LeftArrow from "@/assets/LeftArrow.svg";
 import RightArrow from "@/assets/RightArrow.svg";
-
-import { gsap } from "gsap";
 
 interface RoundButtonProps {
   onClick?: () => void;

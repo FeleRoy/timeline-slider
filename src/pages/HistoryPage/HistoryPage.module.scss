@@ -1,0 +1,31 @@
+.page {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1440px;
+  position: relative;
+  min-height: 1080px;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  width: 431px;
+  position: relative;
+  justify-content: space-between;
+
+  &-line {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(#3877EE, #EF5DA8);
+  }
+
+  h1 {
+    margin-left: 78px;
+    font-weight: bold;
+    font-size: 56px;
+    line-height: 120%;
+  }
+}
