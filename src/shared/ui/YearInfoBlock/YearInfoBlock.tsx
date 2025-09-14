@@ -3,7 +3,7 @@ import styles from "./YearInfoBlock.module.scss";
 
 
 interface YearInfoBlockProps {
-    year: number;
+    year: number | string;
     text: string;
 }
 

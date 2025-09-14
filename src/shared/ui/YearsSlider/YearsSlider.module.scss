@@ -1,0 +1,57 @@
+@use "@/styles/variables.scss";
+.sliderContainer {
+  position: relative;
+  padding: 0 100px; // Место для кнопок
+}
+
+.mySwiper {
+  width: 100%;
+}
+
+.slide {
+  width: 400px !important;
+  height: auto;
+}
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 35px;
+  height: 35px;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  color: variables.$accent-color;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-50%) scale(1.1);
+    background-color: white;
+  }
+
+  &:disabled {
+      opacity: 0;
+     visibility: hidden;
+    cursor: default;
+  }
+}
+
+.customPrev {
+  left: 0;
+}
+
+.customNext {
+  right: 0;
+}
+
+.disabled {
+  opacity: 0;
+  visibility: hidden;
+  cursor: default;
+}

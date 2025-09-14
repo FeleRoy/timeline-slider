@@ -5,6 +5,14 @@ import { BuildOptions } from "./types/types";
 export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
   const isDev = options.mode === "development";
 
+  const cssLoader = {
+    test: /\.css$/i,
+    use: [
+      isDev ? "style-loader" : MiniCssExtractPlugin.loader,
+      "css-loader",
+    ],
+  };
+
   const cssLoaderWithModules = {
     loader: "css-loader",
     options: {
@@ -57,5 +65,5 @@ export function buildLoaders(options: BuildOptions): ModuleOptions["rules"] {
     ],
   };
 
-  return [assetsLoader, scssLoader, tsLoader, svgrLoader];
+  return [assetsLoader, cssLoader, scssLoader, tsLoader, svgrLoader];
 }

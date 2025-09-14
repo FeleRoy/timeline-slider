@@ -5,6 +5,7 @@ import styles from './HistoryPage.module.scss';
 import BackgroundLines from "./ui/BackgroundLines/BackgroundLines";
 import cn from 'classnames';
 import YearInfoBlock from "@/shared/ui/YearInfoBlock/YearInfoBlock";
+import YearsSlider from "@/shared/ui/YearsSlider/YearsSlider";
 
 
 interface HistoryPageProps {}
@@ -34,7 +35,7 @@ const HistoryPage: React.FC<HistoryPageProps> = ({}) => {
           setCurrentPeriod(currentPeriod + 1);
         }}
       ></CircleNav>
-      <YearInfoBlock year={2015} text="13 сентября — частное солнечное затмение, видимое в Южной Африке и части Антарктиды"/>
+      <YearsSlider/>
     </div>
     </>
   );
