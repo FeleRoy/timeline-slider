@@ -48,7 +48,7 @@ const YearsSlider: React.FC<YearsSliderProps> = ({ date, pagClass }) => {
           }}
           modules={[Navigation, Pagination]}
           className={styles.mySwiper}
-          spaceBetween={80}
+          spaceBetween={60}
           slidesPerView="auto"
           pagination={{
             el: `.${pagClass}`, 
@@ -76,7 +76,7 @@ const YearsSlider: React.FC<YearsSliderProps> = ({ date, pagClass }) => {
             },
             768: {
               // slidesPerView: 'auto' as 'auto',
-              spaceBetween: 80,
+              spaceBetween: 60,
               navigation: true,
               pagination: { enabled: false }
             },
