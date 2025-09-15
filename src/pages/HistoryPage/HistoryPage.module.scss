@@ -60,15 +60,14 @@
     content: "";
     position: absolute;
     left: 50%;
-    top: -350px;   
-    bottom: -480px; 
+    top: -350px;
+    bottom: -480px;
     width: 1px;
-    background: rgba(variables.$main-color, 0.1); 
+    background: rgba(variables.$main-color, 0.1);
     transform: translateX(-50%);
     z-index: 0;
   }
 }
-
 
 .circle-wrapper {
   position: absolute;
@@ -78,16 +77,15 @@
   justify-self: end;
   padding-right: 67px;
   z-index: 1;
-  pointer-events: none; 
+  pointer-events: none;
 }
 
 .second-year {
   justify-self: start;
   padding-left: 27px;
   z-index: 1;
-  pointer-events: none; 
+  pointer-events: none;
 }
-
 
 .title {
   position: absolute;
@@ -96,7 +94,6 @@
   font-weight: bold;
   font-size: 20px;
 }
-
 
 .nav-wrapper {
   margin-top: 96px;

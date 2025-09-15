@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import CircleButtons from "@/shared/ui/CircleButtons/CircleButtons";
 import CircleNav from "./ui/CircleNav/CircleNav";
 import styles from "./HistoryPage.module.scss";
-import BackgroundLines from "./ui/BackgroundLines/BackgroundLines";
 import YearsSlider from "@/shared/ui/YearsSlider/YearsSlider";
 import AnimatedDate from "@/shared/ui/AnimatedDate/AnimatedDate";
 import { timelineDate } from "@/utils/types";
@@ -37,7 +36,6 @@ const HistoryPage: React.FC<HistoryPageProps> = ({
   return (
     <>
       <div className={styles.page}>
-        
         <div className={styles.header}>
           <div className={styles["header-line"]}></div>
           <h1>Исторические даты</h1>
@@ -45,7 +43,7 @@ const HistoryPage: React.FC<HistoryPageProps> = ({
 
         <div className={styles["date-container"]}>
           <div className={styles["first-year"]}>
-          <AnimatedDate value={timelines[currentPeriod - 1].firstYear} />
+            <AnimatedDate value={timelines[currentPeriod - 1].firstYear} />
           </div>
           <div className={styles["circle-wrapper"]}>
             <CircleButtons
@@ -56,10 +54,10 @@ const HistoryPage: React.FC<HistoryPageProps> = ({
             ></CircleButtons>
           </div>
           <div className={styles["second-year"]}>
-          <AnimatedDate
-            color="red"
-            value={timelines[currentPeriod - 1].lastYear}
-          />
+            <AnimatedDate
+              color="red"
+              value={timelines[currentPeriod - 1].lastYear}
+            />
           </div>
         </div>
 

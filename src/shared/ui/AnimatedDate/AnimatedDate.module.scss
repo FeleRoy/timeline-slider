@@ -1,16 +1,15 @@
 @use "@/styles/variables.scss";
 
 .number {
+  font-size: 200px;
+  font-weight: bold;
+  letter-spacing: -0.02em;
 
-    font-size: 200px;
-    font-weight: bold;
-    letter-spacing: -0.02em;;
+  &--blue {
+    color: variables.$date-color-first;
+  }
 
-    &--blue {
-        color: variables.$date-color-first;
-    }
-
-    &--red {
-        color: variables.$date-color-second;
-    }
+  &--red {
+    color: variables.$date-color-second;
+  }
 }
