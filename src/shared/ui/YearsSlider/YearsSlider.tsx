@@ -69,14 +69,14 @@ const YearsSlider: React.FC<YearsSliderProps> = ({ date, pagClass }) => {
           }}
           breakpoints={{
             0: {
-              slidesPerView: 1,
+              // slidesPerView: 1,
               navigation: false,
               pagination: { clickable: true },
             },
             768: {
-              slidesPerView: "auto",
+              // slidesPerView: 'auto' as 'auto',
               navigation: true,
-              pagination: false,
+              pagination: { enabled: false }
             },
           }}
         >
