@@ -1,8 +1,7 @@
 @use "@/styles/variables.scss";
 
 .circle {
-  position: absolute;
-  margin: 50px auto;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;

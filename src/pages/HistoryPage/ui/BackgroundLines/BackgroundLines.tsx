@@ -13,8 +13,8 @@ const BackgroundLines: React.FC<BackgroundLinesProps> = ({
     <div className={styles.backlines}>
       <div className={cn(styles.line, styles.left)} />
       <div className={cn(styles.line, styles.right)}  />
-      <div className={cn(styles.line, styles.horizontal)} />
-      <div className={cn(styles.line, styles.vertical)} />
+      {/* <div className={cn(styles.line, styles.horizontal)} />
+      <div className={cn(styles.line, styles.vertical)} /> */}
     </div>
   );
 };

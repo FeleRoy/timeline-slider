@@ -18,7 +18,7 @@ const CircleNav: React.FC<CircleNavProps> = ({
   return (
     <>
     <div className={styles.wrapper}>
-    <h3>0{currentIndex}/0{maxIndex}</h3>
+    <h3 className={styles.text}>0{currentIndex}/0{maxIndex}</h3>
     <div className={styles['button-wrapper']}>
         <RoundButton direction="<" onClick={onLeftClick}  disabled={currentIndex === 1}/>
         <RoundButton direction=">" onClick={onRightClick} disabled={currentIndex === maxIndex}/>

@@ -10,7 +10,7 @@ interface AnimatedDateProps {
 }
 
 
-const AnimatedDate: React.FC<AnimatedDateProps> = ({value, duration = 1, color = 'blue'}) => {
+const AnimatedDate: React.FC<AnimatedDateProps> = ({value, duration = 0.5, color = 'blue'}) => {
   const [displayValue, setDisplayValue] = useState(value);
   const obj = useRef({ val: value });
   const spanRef = useRef(null);
