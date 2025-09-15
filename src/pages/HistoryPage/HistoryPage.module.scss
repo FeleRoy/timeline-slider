@@ -52,7 +52,7 @@
     height: 1px;
     background-color: rgba(variables.$main-color, 0.1);
     transform: translateY(-50%);
-    z-index: 0;
+    z-index: -1;
   }
 
   // Вертикальная линия
@@ -65,25 +65,26 @@
     width: 1px;
     background: rgba(variables.$main-color, 0.1);
     transform: translateX(-50%);
-    z-index: 0;
+    z-index: -1;
   }
 }
 
 .circle-wrapper {
   position: absolute;
+  z-index: 1;
 }
 
 .first-year {
   justify-self: end;
   padding-right: 67px;
-  z-index: 1;
+  z-index: 0;
   pointer-events: none;
 }
 
 .second-year {
   justify-self: start;
   padding-left: 27px;
-  z-index: 1;
+  z-index: 0;
   pointer-events: none;
 }
 
