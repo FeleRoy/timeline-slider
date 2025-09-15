@@ -68,6 +68,10 @@
   position: relative;
 }
 
+:global(.swiper-slide) {
+  width: 400px;
+}
+
 @media (width <= 768px) {
   .sliderContainer {
     padding: 0;
@@ -78,6 +82,10 @@
   }
 
   .mySwiper {
-    min-height: 250px;
+    min-height: 190px;
+  }
+  
+  :global(.swiper-slide) {
+    width: 170px;
   }
 }

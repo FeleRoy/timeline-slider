@@ -70,11 +70,13 @@ const YearsSlider: React.FC<YearsSliderProps> = ({ date, pagClass }) => {
           breakpoints={{
             0: {
               // slidesPerView: 1,
+              spaceBetween: 25,
               navigation: false,
               pagination: { clickable: true },
             },
             768: {
               // slidesPerView: 'auto' as 'auto',
+              spaceBetween: 80,
               navigation: true,
               pagination: { enabled: false }
             },
@@ -82,7 +84,7 @@ const YearsSlider: React.FC<YearsSliderProps> = ({ date, pagClass }) => {
         >
           {/* style={{ width: "400px"}} */}
           {date.map((slide, index) => (
-            <SwiperSlide style={{width: '400px'}} key={index}>
+            <SwiperSlide key={index}>
               <YearInfoBlock
                 year={slide.year}
                 text={slide.text}

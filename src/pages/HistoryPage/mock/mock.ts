@@ -3,7 +3,7 @@ export const HistoryPageMock: timelineDate[] = [
   {
     title: "Наука",
     firstYear: 2015,
-    lastYear: 2022,
+    lastYear: 2020,
     yearsDate: [
       {
         year: 2010,
@@ -18,8 +18,8 @@ export const HistoryPageMock: timelineDate[] = [
         text: "Создана первая квантовая система, превысившая возможности классических суперкомпьютеров.",
       },
       {
-        year: 2025,
-        text: "Телескоп «Джеймс Уэбб» передал уникальные данные о зарождении первых галактик.",
+        year: 2020,
+        text: "Запуск автоматического космического аппарата для исследования Солнца Solar Orbiter",
       },
     ],
   },

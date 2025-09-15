@@ -24,9 +24,14 @@
   .wrapper {
     display: flex;
     flex-direction: column;
-    width: 300px;
-  }
-  p {
-    font-size: 14px;
+    width: 150px;
+
+    h3 {
+      font-size: 14px;
+    }
+    p {
+      font-size: 14px;
+      line-height: 145%;
+    }
   }
 }
