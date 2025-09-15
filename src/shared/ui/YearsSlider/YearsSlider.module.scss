@@ -6,7 +6,7 @@
 
 .mySwiper {
   width: 99%;
-  --swiper-pagination-bottom: 10px;
+  --swiper-pagination-bullet-horizontal-gap: 5px;
 }
 
 .navButton {
@@ -64,8 +64,8 @@
   background-color: rgba(variables.$main-color, 1);
 }
 
-:global(.swiper-slide) {
-  width: 400px;
+:global(.swiper-pagination) {
+  position: relative;
 }
 
 @media (width <= 768px) {
@@ -76,5 +76,8 @@
   .navButton {
     color: transparent;
   }
-}
 
+  .mySwiper {
+    min-height: 250px;
+  }
+}

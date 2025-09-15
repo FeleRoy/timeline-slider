@@ -5,7 +5,7 @@ import YearInfoBlock from "../YearInfoBlock/YearInfoBlock";
 
 import "swiper/css";
 import "swiper/css/navigation";
-import 'swiper/css/pagination';
+import "swiper/css/pagination";
 
 import "./YearsSlider.module.scss";
 import styles from "./YearsSlider.module.scss";
@@ -18,9 +18,10 @@ import { yearsDateInfo } from "@/utils/types";
 
 interface YearsSliderProps {
   date: yearsDateInfo[];
+  pagClass: string;
 }
 
-const YearsSlider: React.FC<YearsSliderProps> = ({ date }) => {
+const YearsSlider: React.FC<YearsSliderProps> = ({ date, pagClass }) => {
   const swiperRef = useRef<any>(null);
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
@@ -36,7 +37,6 @@ const YearsSlider: React.FC<YearsSliderProps> = ({ date }) => {
       swiperRef.current.swiper.slideNext();
     }
   };
-
   return (
     <>
       <div className={styles.sliderContainer}>
@@ -49,8 +49,16 @@ const YearsSlider: React.FC<YearsSliderProps> = ({ date }) => {
           modules={[Navigation, Pagination]}
           className={styles.mySwiper}
           spaceBetween={80}
-          pagination={true}
           slidesPerView="auto"
+          pagination={{
+            el: `.${pagClass}`, 
+            clickable: true,
+            // dynamicBullets: true, 
+            // dynamicMainBullets: 3, 
+            renderBullet: (index, className) => {
+              return `<span class="${className} custom-bullet"></span>`;
+            },
+          }}
           onSlideChange={(swiper) => {
             setIsBeginning(swiper.isBeginning);
             setIsEnd(swiper.isEnd);
@@ -66,6 +74,7 @@ const YearsSlider: React.FC<YearsSliderProps> = ({ date }) => {
               pagination: { clickable: true },
             },
             768: {
+              slidesPerView: "auto",
               navigation: true,
               pagination: false,
             },
@@ -73,7 +82,7 @@ const YearsSlider: React.FC<YearsSliderProps> = ({ date }) => {
         >
           {/* style={{ width: "400px"}} */}
           {date.map((slide, index) => (
-            <SwiperSlide  key={index}>
+            <SwiperSlide style={{width: '400px'}} key={index}>
               <YearInfoBlock
                 year={slide.year}
                 text={slide.text}

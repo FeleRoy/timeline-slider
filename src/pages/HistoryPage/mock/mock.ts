@@ -141,8 +141,8 @@ export const HistoryPageMock: timelineDate[] = [
 ];
 
 
-export const timelineDates2 = (): timelineDate[] => {
-  return [
+export const timelineDates2: timelineDate[] = 
+  [
     {
       title: 'Наука и технологии',
       firstYear: 2015,
@@ -385,5 +385,4 @@ export const timelineDates2 = (): timelineDate[] => {
         }
       ]
     }
-  ];
-};
+  ]

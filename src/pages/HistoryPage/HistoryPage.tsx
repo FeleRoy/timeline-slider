@@ -5,7 +5,7 @@ import styles from "./HistoryPage.module.scss";
 import YearsSlider from "@/shared/ui/YearsSlider/YearsSlider";
 import AnimatedDate from "@/shared/ui/AnimatedDate/AnimatedDate";
 import { timelineDate } from "@/utils/types";
-import { HistoryPageMock } from "./mock/mock";
+import { HistoryPageMock, timelineDates2 } from "./mock/mock";
 
 import gsap from "gsap";
 
@@ -52,7 +52,6 @@ const HistoryPage: React.FC<HistoryPageProps> = ({
           <div className={styles["header-line"]}></div>
           <h1>Исторические <br /> даты</h1>
         </div>
-
         <div className={styles["date-container"]}>
           <div className={styles["first-year"]}>
             <AnimatedDate value={timelines[currentPeriod - 1].firstYear} />
@@ -89,10 +88,11 @@ const HistoryPage: React.FC<HistoryPageProps> = ({
         </div>}
             {isMobile && <div className={styles['dividing-line']}></div>}
         <div className={styles["slider-wrapper"]}>
-          <YearsSlider date={timelines[currentPeriod - 1].yearsDate} />
+          <YearsSlider pagClass={styles["custom-pagination"]} date={timelines[currentPeriod - 1].yearsDate} />
         </div>
 
         {isMobile && <div className={styles["nav-wrapper"]}>
+          <div>
           <CircleNav
             currentIndex={currentPeriod}
             maxIndex={timelines.length}
@@ -103,6 +103,8 @@ const HistoryPage: React.FC<HistoryPageProps> = ({
               setCurrentPeriod(currentPeriod + 1);
             }}
           ></CircleNav>
+          </div>
+          <div className={styles["custom-pagination"]}></div>
         </div>}
       </div>
     </>
