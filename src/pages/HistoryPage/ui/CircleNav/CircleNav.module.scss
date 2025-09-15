@@ -13,3 +13,12 @@
   display: flex;
   gap: 20px;
 }
+
+@media (width <= 768px) {
+  .button-wrapper {
+    gap: 8px;
+  }
+  .wrapper {
+    gap: 10px;
+  }
+}

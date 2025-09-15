@@ -13,3 +13,18 @@
     color: variables.$date-color-second;
   }
 }
+
+
+
+@media (width <= 1024px) {
+    .number{
+      font-size: 100px;
+    }
+}
+
+
+@media (width <= 768px) {
+    .number{
+      font-size: 56px;
+    }
+}

@@ -25,3 +25,19 @@
     cursor: default;
   }
 }
+
+.arrow {
+  width:10px;
+  height:14px;
+}
+
+@media (width <= 768px) {
+  .button {
+    width: 25px;
+    height: 25px;
+  }
+
+  .arrow {
+  height:8px;
+}
+}

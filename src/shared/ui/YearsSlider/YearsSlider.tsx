@@ -5,10 +5,12 @@ import YearInfoBlock from "../YearInfoBlock/YearInfoBlock";
 
 import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 import "./YearsSlider.module.scss";
 import styles from "./YearsSlider.module.scss";
 
-import { Navigation } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 
 import LeftArrow from "@/assets/LeftArrow.svg";
 import RightArrow from "@/assets/RightArrow.svg";
@@ -16,9 +18,10 @@ import { yearsDateInfo } from "@/utils/types";
 
 interface YearsSliderProps {
   date: yearsDateInfo[];
+  pagClass: string;
 }
 
-const YearsSlider: React.FC<YearsSliderProps> = ({ date }) => {
+const YearsSlider: React.FC<YearsSliderProps> = ({ date, pagClass }) => {
   const swiperRef = useRef<any>(null);
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
@@ -34,7 +37,6 @@ const YearsSlider: React.FC<YearsSliderProps> = ({ date }) => {
       swiperRef.current.swiper.slideNext();
     }
   };
-
   return (
     <>
       <div className={styles.sliderContainer}>
@@ -44,10 +46,19 @@ const YearsSlider: React.FC<YearsSliderProps> = ({ date }) => {
             nextEl: `.${styles.customNext}`,
             prevEl: `.${styles.customPrev}`,
           }}
-          modules={[Navigation]}
+          modules={[Navigation, Pagination]}
           className={styles.mySwiper}
-          spaceBetween={80}
+          spaceBetween={60}
           slidesPerView="auto"
+          pagination={{
+            el: `.${pagClass}`, 
+            clickable: true,
+            // dynamicBullets: true, 
+            // dynamicMainBullets: 3, 
+            renderBullet: (index, className) => {
+              return `<span class="${className} custom-bullet"></span>`;
+            },
+          }}
           onSlideChange={(swiper) => {
             setIsBeginning(swiper.isBeginning);
             setIsEnd(swiper.isEnd);
@@ -56,9 +67,24 @@ const YearsSlider: React.FC<YearsSliderProps> = ({ date }) => {
             setIsBeginning(swiper.isBeginning);
             setIsEnd(swiper.isEnd);
           }}
+          breakpoints={{
+            0: {
+              // slidesPerView: 1,
+              spaceBetween: 25,
+              navigation: false,
+              pagination: { clickable: true },
+            },
+            768: {
+              // slidesPerView: 'auto' as 'auto',
+              spaceBetween: 60,
+              navigation: true,
+              pagination: { enabled: false }
+            },
+          }}
         >
+          {/* style={{ width: "400px"}} */}
           {date.map((slide, index) => (
-            <SwiperSlide style={{ width: "400px" }} key={index}>
+            <SwiperSlide key={index}>
               <YearInfoBlock
                 year={slide.year}
                 text={slide.text}
