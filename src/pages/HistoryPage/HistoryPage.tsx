@@ -5,7 +5,7 @@ import styles from "./HistoryPage.module.scss";
 import YearsSlider from "@/shared/ui/YearsSlider/YearsSlider";
 import AnimatedDate from "@/shared/ui/AnimatedDate/AnimatedDate";
 import { timelineDate } from "@/utils/types";
-import { HistoryPageMock, timelineDates2 } from "./mock/mock";
+import { HistoryPageMock} from "./mock/mock";
 
 import gsap from "gsap";
 
