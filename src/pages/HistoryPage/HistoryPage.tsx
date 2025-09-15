@@ -21,6 +21,19 @@ const HistoryPage: React.FC<HistoryPageProps> = ({
     setCurrentPeriod(index + 1);
   };
   const titleRef = useRef<HTMLHeadingElement | null>(null);
+  
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const isMobile = windowWidth <= 768;
+  const isTablet = windowWidth <= 1010;
 
   useEffect(() => {
     if (titleRef.current) {
@@ -37,22 +50,23 @@ const HistoryPage: React.FC<HistoryPageProps> = ({
       <div className={styles.page}>
         <div className={styles.header}>
           <div className={styles["header-line"]}></div>
-          <h1>Исторические даты</h1>
+          <h1>Исторические <br /> даты</h1>
         </div>
 
         <div className={styles["date-container"]}>
           <div className={styles["first-year"]}>
             <AnimatedDate value={timelines[currentPeriod - 1].firstYear} />
           </div>
-          <div className={styles["circle-wrapper"]}>
+          {!isMobile && <div className={styles["circle-wrapper"]}>
             <CircleButtons
+              radius={isTablet ? 200 : 265}
               title={timelines[currentPeriod - 1].title}
               btnCount={timelines.length}
               onBtnClick={handleButtonClick}
               activeIndex={currentPeriod - 1}
               setActiveIndex={setCurrentPeriod}
             ></CircleButtons>
-          </div>
+          </div>}
           <div className={styles["second-year"]}>
             <AnimatedDate
               color="red"
@@ -61,7 +75,7 @@ const HistoryPage: React.FC<HistoryPageProps> = ({
           </div>
         </div>
 
-        <div className={styles["nav-wrapper"]}>
+        {!isMobile && <div className={styles["nav-wrapper"]}>
           <CircleNav
             currentIndex={currentPeriod}
             maxIndex={timelines.length}
@@ -72,11 +86,24 @@ const HistoryPage: React.FC<HistoryPageProps> = ({
               setCurrentPeriod(currentPeriod + 1);
             }}
           ></CircleNav>
-        </div>
-
+        </div>}
+            {isMobile && <div className={styles['dividing-line']}></div>}
         <div className={styles["slider-wrapper"]}>
           <YearsSlider date={timelines[currentPeriod - 1].yearsDate} />
         </div>
+
+        {isMobile && <div className={styles["nav-wrapper"]}>
+          <CircleNav
+            currentIndex={currentPeriod}
+            maxIndex={timelines.length}
+            onLeftClick={() => {
+              setCurrentPeriod(currentPeriod - 1);
+            }}
+            onRightClick={() => {
+              setCurrentPeriod(currentPeriod + 1);
+            }}
+          ></CircleNav>
+        </div>}
       </div>
     </>
   );

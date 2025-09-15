@@ -18,10 +18,10 @@ const RoundButton: React.FC<RoundButtonProps> = ({
     <div style={{ display: "flex" }}>
       <button className={styles.button} onClick={onClick} disabled={disabled}>
         {direction === "<" && (
-          <LeftArrow width="10" height="14" viewBox="0 0 10 14" />
+          <LeftArrow className={styles.arrow} viewBox="0 0 10 14" />
         )}
         {direction === ">" && (
-          <RightArrow width="10" height="14" viewBox="0 0 10 14" />
+          <RightArrow className={styles.arrow} viewBox="0 0 10 14" />
         )}
       </button>
     </div>

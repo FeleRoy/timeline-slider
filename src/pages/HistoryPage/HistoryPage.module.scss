@@ -11,7 +11,6 @@
 
 .header {
   display: flex;
-  width: 431px;
   position: relative;
   justify-content: space-between;
   margin-top: 156px;
@@ -96,4 +95,60 @@
 .slider-wrapper {
   margin-top: 60px;
   margin-left: 0px;
+}
+
+@media (width <= 1024px) {
+  .header {
+    h1 {
+      margin-left: 50px;
+      font-size: 40px;
+    }
+  }
+}
+
+@media (width <= 768px) {
+  .header {
+    margin-top: 59px;
+    h1 {
+      margin-left: 20px;
+      font-size: 20px;
+    }
+
+    &-line {
+      background: transparent;
+    }
+  }
+
+  .date-container {
+    margin-top: 56px;
+
+    &::before {
+      background: transparent;
+    }
+    &::after {
+      background: transparent;
+    }
+  }
+
+  .first-year {
+    justify-self: center;
+    padding-right: 0px;
+  }
+
+  .second-year {
+    justify-self: center;
+    padding-left: 0px;
+  }
+
+  .dividing-line {
+    margin: 0 auto;
+    width: 87%;
+    height: 1px;
+    background: #c7cdd9;
+    margin-top: 57px;
+  }
+  .nav-wrapper {
+    margin-top: 0px;
+    margin-left: 20px;
+  }
 }
