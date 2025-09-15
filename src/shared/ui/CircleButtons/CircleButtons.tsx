@@ -4,6 +4,7 @@ import { gsap } from "gsap";
 
 interface CircleButtonsProps {
   btnCount: number;
+  title?: string;
   radius?: number;
   rotationDuration?: number;
   buttonSize?: number;
@@ -43,6 +44,7 @@ const getTargetRotationForIndex = (
 
 const CircleButtons: React.FC<CircleButtonsProps> = ({
   btnCount,
+  title,
   radius = 265,
   rotationDuration = 0.8,
   buttonSize = 56,
@@ -57,7 +59,7 @@ const CircleButtons: React.FC<CircleButtonsProps> = ({
   if (buttons.length < 2 || buttons.length > 6) {
     throw new Error("количество кнопок от 2 до 6");
   }
-
+  const titleRef = useRef<HTMLHeadingElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const buttonsRef = useRef<(HTMLButtonElement | null)[]>([]);
   const angleStep = (2 * Math.PI) / buttons.length;
@@ -79,9 +81,9 @@ const CircleButtons: React.FC<CircleButtonsProps> = ({
       });
     }
 
-    buttonsRef.current.forEach((el) => {
-      if (!el) return;
-      gsap.to(el, {
+    buttonsRef.current.forEach((btn) => {
+      if (!btn) return;
+      gsap.to(btn, {
         rotation: -newRotation,
         duration: rotationDuration,
         ease: "power2.inOut",
@@ -100,9 +102,9 @@ const CircleButtons: React.FC<CircleButtonsProps> = ({
     if (containerRef.current) {
       gsap.set(containerRef.current, { rotation: initRotation });
     }
-    buttonsRef.current.forEach((el) => {
-      if (!el) return;
-      gsap.set(el, { rotation: -initRotation });
+    buttonsRef.current.forEach((btn) => {
+      if (!btn) return;
+      gsap.set(btn, { rotation: -initRotation });
     });
 
     if (buttonsRef.current[activeIndex]) {
@@ -125,6 +127,19 @@ const CircleButtons: React.FC<CircleButtonsProps> = ({
 
     animateToIndex(activeIndex);
   }, [activeIndex]);
+
+  useEffect(() => {
+    if (titleRef.current.textContent === title) return;
+    if (titleRef.current) {
+      titleRef.current.textContent = title
+      gsap.fromTo(
+        titleRef.current,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.8, ease: "power1.out" }
+      );
+    }
+  }, [title]);
+
 
   const setButtonRef = useCallback(
     (index: number) => (el: HTMLButtonElement | null) => {
@@ -156,38 +171,41 @@ const CircleButtons: React.FC<CircleButtonsProps> = ({
   };
 
   return (
-    <div
-      className={style.circle}
-      ref={containerRef}
-      style={{ width: `${radius * 2}px`, height: `${radius * 2}px` }}
-    >
-      {buttons.map((button, index) => {
-        const angle = index * angleStep;
-        const x = radius * Math.cos(angle) + radius - buttonSize / 2;
-        const y = radius * Math.sin(angle) + radius - buttonSize / 2;
-        return (
-          <button
-            key={index}
-            ref={setButtonRef(index)}
-            onClick={() => {
-              handleButtonClick(index);
-            }}
-            onMouseEnter={() => handleMouseEnter(index)}
-            onMouseLeave={() => handleMouseLeave(index)}
-            className={style.circle__button}
-            style={{
-              left: `${x}px`,
-              top: `${y}px`,
-              transform: "scale(0.11)",
-              width: buttonSize,
-              height: buttonSize,
-            }}
-          >
-            {button}
-          </button>
-        );
-      })}
-    </div>
+    <>
+      <h2 ref={titleRef} className={style.title}></h2>
+      <div
+        className={style.circle}
+        ref={containerRef}
+        style={{ width: `${radius * 2}px`, height: `${radius * 2}px` }}
+      >
+        {buttons.map((button, index) => {
+          const angle = index * angleStep;
+          const x = radius * Math.cos(angle) + radius - buttonSize / 2;
+          const y = radius * Math.sin(angle) + radius - buttonSize / 2;
+          return (
+            <button
+              key={index}
+              ref={setButtonRef(index)}
+              onClick={() => {
+                handleButtonClick(index);
+              }}
+              onMouseEnter={() => handleMouseEnter(index)}
+              onMouseLeave={() => handleMouseLeave(index)}
+              className={style.circle__button}
+              style={{
+                left: `${x}px`,
+                top: `${y}px`,
+                transform: "scale(0.11)",
+                width: buttonSize,
+                height: buttonSize,
+              }}
+            >
+              {button}
+            </button>
+          );
+        })}
+      </div>
+    </>
   );
 };
 
