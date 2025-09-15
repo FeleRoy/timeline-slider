@@ -5,7 +5,7 @@
 }
 
 .mySwiper {
-  width: 100%;
+  width: 99%;
 }
 
 .navButton {
@@ -31,18 +31,18 @@
   }
 
   &:disabled {
-      opacity: 0;
-     visibility: hidden;
+    opacity: 0;
+    visibility: hidden;
     cursor: default;
   }
 }
 
 .customPrev {
-  left: 10px;
+  left: 40px;
 }
 
 .customNext {
-  right: 10px;
+  right: 40px;
 }
 
 .disabled {

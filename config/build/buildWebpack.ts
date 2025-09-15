@@ -15,7 +15,7 @@ export function buildWebpack(options: BuildOptions): webpack.Configuration {
       path: paths.output,
       filename: "[name].[contenthash].js",
       clean: true,
-      publicPath: "/timeline-slider/",
+      publicPath: !isDev ? "/timeline-slider/" : '',
     },
     plugins: buildPlugins(options),
     module: {

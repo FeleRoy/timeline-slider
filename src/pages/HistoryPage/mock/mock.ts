@@ -2,8 +2,8 @@ import { timelineDate, yearsDateInfo } from "@/utils/types";
 export const HistoryPageMock: timelineDate[] = [
   {
     title: "Наука",
-    firstYear: 2010,
-    lastYear: 2025,
+    firstYear: 2015,
+    lastYear: 2022,
     yearsDate: [
       {
         year: 2010,
