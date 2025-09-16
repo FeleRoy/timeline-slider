@@ -1,9 +1,9 @@
-import HistoryPage from "./pages/HistoryPage/HistoryPage";
+import HistoryBlock from "./Blocks/HistoryBlock/HistoryBlock";
 
 const App = () => {
     return (
         <>
-        <HistoryPage/>
+        <HistoryBlock/>
         </>
     );
 };
